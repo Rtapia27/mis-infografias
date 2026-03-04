@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía: Diseño Web con Gemini 3.1 Pro</title>
+    <style>
+        :root {
+            --primary: #1a237e; /* Azul Marino */
+            --secondary: #455a64; /* Gris Técnico */
+            --accent: #00bcd4;
+            --bg: #f5f7f9;
+            --text: #263238;
+            --white: #ffffff;
+            --code-bg: #1e1e1e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .video-btn:hover {
+            background-color: #00acc1;
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .intro-card {
+            background: var(--white);
+            border-left: 5px solid var(--accent);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: border 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3 span {
+            background: var(--primary);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        code-block {
+            display: block;
+            background: var(--code-bg);
+            color: #dcdcdc;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .warning {
+            background: #fff3e0;
+            border: 1px solid #ffe0b2;
+            color: #e65100;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .warning::before {
+            content: "⚠️";
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .deployment-info {
+            background: #e8eaf6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px dashed var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Diseño Web de Nivel Agencia con Gemini 3.1 Pro</h1>
+    <p>Guía de Implementación "One-Shot" para Tecnólogos Creativos</p>
+    <a href="https://youtu.be/B_6QYycza9U" target="_blank" class="video-btn">Ver Video Original</a>
+</header>
+
+<main>
+    <section class="intro-card">
+        <h2>El Paradigma "One-Shot"</h2>
+        <p>Estamos ante un cambio de juego. Gracias a <strong>Gemini 3.1 Pro</strong>, ya no hablamos de generar plantillas genéricas, sino de "planos digitales" completos. El flujo consiste en dar una instrucción masiva y estructurada (testamento de prompt) que define no solo la estética, sino el comportamiento dinámico del sitio.</p>
+    </section>
+
+    <h2>1. Anatomía del Prompt Maestro</h2>
+    <div class="grid">
+        <div class="card">
+            <h3><span>1</span> Definición de Rol</h3>
+            <p>Se le ordena a la IA actuar como un "Tecnólogo Creativo Senior" e "Ingeniero Líder de Frontend". Esto eleva la calidad del código y la obsesión por el detalle.</p>
+        </div>
+        <div class="card">
+            <h3><span>2</span> Estilo Visual</h3>
+            <p>No basta con decir "bonito". Se usan términos como "estética cinematográfica", "clínica boutique" o "tecnología orgánica" para guiar el motor de diseño.</p>
+        </div>
+        <div class="card">
+            <h3><span>3</span> Comportamiento</h3>
+            <p>Se especifican animaciones SVG, efectos de scroll (desenfoques suaves) y micro-transiciones que dan la sensación de producto premium.</p>
+        </div>
+    </div>
+
+    <h2>2. El Sistema de 6 Preguntas</h2>
+    <p>Para no editar prompts larguísimos, el video propone un sistema de entradas clave que Gemini utiliza para construir la landing:</p>
+    <code-block>
+1. Nombre del Proyecto: [Ej. Vela Arquitectura]
+2. ¿Qué vendes/haces?: [Servicios, productos, comunidad]
+3. Cliente Ideal: [Perfil específico de usuario]
+4. Oferta de Valor: [Qué obtienen exactamente]
+5. Prueba Social: [Datos de confianza, proyectos entregados]
+6. Llamada a la Acción (CTA): [Ej. Reservar evaluación]
+    </code-block>
+
+    <h2>3. Casos de Aplicación Analizados</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Clinic Balance</h3>
+            <p>Enfoque moderno en nutrición y estrés. El diseño genera módulos que parecen interfaces de telemetría médica en vivo.</p>
+        </div>
+        <div class="card">
+            <h3>Vela Arquitectura</h3>
+            <p>Estudio premium. Tipografías minimalistas de gran tamaño y secciones separadas por fases de obra (Concepto, Planos, Renders).</p>
+        </div>
+    </div>
+
+    <div class="warning">
+        <strong>Advertencia Técnica:</strong> Aunque Gemini 3.1 genera código funcional, siempre se debe revisar la integración de imágenes de fondo y los enlaces de los botones antes de pasar a producción.
+    </div>
+
+    <h2>4. Flujo de Despliegue Automático</h2>
+    <div class="deployment-info">
+        <p>Para que tu sitio sea público, sigue estos pasos:</p>
+        <ol style="text-align: left; display: inline-block; margin-top: 10px;">
+            <li>Copia el código generado en un archivo <code>index.html</code>.</li>
+            <li>Súbelo a un repositorio de GitHub llamado <code>mis-infografias</code>.</li>
+            <li>Activa <strong>GitHub Pages</strong> en la configuración del repo.</li>
+        </ol>
+    </div>
+</main>
+
+<footer>
+    <p>Arquitecto Educativo Multimodal - 2024</p>
+    <p>URL de despliegue estimada:</p>
+    <strong id="deploy-url">https://Rtapia27.github.io/mis-infografias/guia-gemini-web-pro.html</strong>
+</footer>
+
+</body>
+</html>
