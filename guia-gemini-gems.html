@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root { --primary: #2196f3; --bg: #f8fafc; --text: #1e293b; --card-bg: #ffffff; --border: #e2e8f0; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: 0 auto; }
+        .btn { background: var(--primary); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; float: right; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
+        h1 { color: var(--primary); font-size: 2rem; margin-bottom: 30px; border-left: 5px solid var(--primary); padding-left: 15px; }
+        h2 { color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 8px; margin-top: 40px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        code { background: #1e293b; color: #e2e8f0; padding: 4px 8px; border-radius: 4px; font-family: monospace; }
+        .badge { background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+        footer { margin-top: 50px; text-align: center; font-size: 0.9rem; color: #64748b; }
+    </style>
+    <title>Gems de Gemini: Guía de Despliegue</title>
+</head>
+<body>
+    <a href="https://youtu.be/DnfGiz7RV0Q?si=U7260Gh7Wv5tFY6v" target="_blank" class="btn">Ver Video Original</a>
+    <h1>Tutorial Asistentes IA: Gems de Gemini (0 a 100)</h1>
+
+    <div class="card">
+        <h2>Resumen Ejecutivo</h2>
+        <p>Los <strong>Gems</strong> son versiones personalizadas de Gemini que actúan como asistentes especializados. Permiten automatizar flujos de trabajo repetitivos eliminando la necesidad de reescribir instrucciones (prompts). Su potencia radica en la integración con Google Workspace (Drive, Docs) y la herramienta <strong>Canvas</strong> para generar archivos descargables.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>🚀 Diferenciadores Clave</h3>
+            <ul>
+                <li><strong>Sincronización Drive:</strong> A diferencia de los GPTs, los Gems actualizan su base de conocimientos en tiempo real si editas el archivo fuente en Drive.</li>
+                <li><strong>Canvas:</strong> Capacidad nativa para generar y editar archivos (PDF, código) en un panel lateral interactivo.</li>
+                <li><strong>Acceso Gratuito:</strong> Disponibles en cuentas free con limitaciones de modelos de razonamiento.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>🏗️ Estructura del System Prompt</h3>
+            <p>Para crear un Gem robusto, utiliza este esquema:</p>
+            <ul>
+                <li><code># Identidad:</code> Rol experto definido.</li>
+                <li><code># Contexto:</code> Información de base o archivos adjuntos.</li>
+                <li><code># Instrucciones Operativas:</code> Pasos exactos a seguir.</li>
+                <li><code># Restricciones:</code> Lo que la IA NUNCA debe hacer.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Casos de Uso Destacados</h2>
+        <ul>
+            <li><strong>Profesor Socrático:</strong> En lugar de dar respuestas, hace preguntas para guiar el aprendizaje (Herramienta: <code>Aprendizaje Guiado</code>).</li>
+            <li><strong>Analista de Noticias:</strong> Procesa URLs y extrae datos en formatos <code>Markdown</code> listos para blogs.</li>
+            <li><strong>Resumidor de Videos:</strong> Analiza contenido de YouTube y genera un informe estructurado en PDF vía <code>Canvas</code>.</li>
+        </ul>
+    </div>
+
+    <div class="card" style="border-top: 4px solid #f59e0b;">
+        <h2>Veredicto Técnico</h2>
+        <p><strong>Fortalezas:</strong> Ecosistema Google, sincronización dinámica de archivos y herramienta Canvas superior para documentos.</p>
+        <p><strong>Debilidades:</strong> Interfaz de creación pequeña, falta de marketplace público y sin iconos personalizados (actualmente generados por la IA).</p>
+    </div>
+
+    <footer>
+        <p>Desplegado automáticamente por el Arquitecto de Despliegue para mis-infografias | 2024</p>
+    </footer>
+</body>
+</html>
