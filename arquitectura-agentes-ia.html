@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura y Despliegue de Agentes de IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #fafafa; color: #334155; font-family: 'Segoe UI', system-ui, sans-serif; scroll-behavior: smooth; }
+        .chart-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; height: 40vh; max-height: 400px; min-height: 300px; }
+        .nav-item.active { background-color: #e0f2fe; color: #0369a1; border-right: 4px solid #0ea5e9; font-weight: 600; }
+        .tab-btn.active { background-color: #0ea5e9; color: white; transform: scale(1.05); box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.4); }
+        .fade-in { animation: fadeIn 0.4s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid #e2e8f0; }
+        .icon-circle { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background-color: #f0f9ff; color: #0ea5e9; font-size: 1.5rem; margin-bottom: 1rem; }
+    </style>
+</head>
+<body class="antialiased selection:bg-sky-200 selection:text-sky-900">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <nav class="w-full md:w-64 lg:w-72 bg-white border-r border-slate-200 sticky top-0 md:h-screen overflow-y-auto z-20 shadow-sm md:shadow-none">
+            <div class="p-6">
+                <div class="text-3xl mb-2">&#x1F9BE;</div>
+                <h1 class="text-xl font-bold text-slate-800 leading-tight">Arquitectura de Agentes de IA</h1>
+                <p class="text-xs text-slate-500 mt-2 uppercase tracking-wider font-semibold">Guía Técnica Interactiva</p>
+            </div>
+            <ul class="flex md:flex-col overflow-x-auto md:overflow-hidden pb-2 md:pb-0 px-4 md:px-0">
+                <li class="min-w-max md:min-w-full"><button onclick="scrollToSection('intro')" class="nav-item active w-full text-left px-6 py-4 text-sm hover:bg-slate-50 transition-colors">1. Paradigma LLM vs Agente</button></li>
+                <li class="min-w-max md:min-w-full"><button onclick="scrollToSection('niveles')" class="nav-item w-full text-left px-6 py-4 text-sm hover:bg-slate-50 transition-colors">2. Los 4 Niveles de Agencia</button></li>
+                <li class="min-w-max md:min-w-full"><button onclick="scrollToSection('implementacion')" class="nav-item w-full text-left px-6 py-4 text-sm hover:bg-slate-50 transition-colors">3. OpenCloud & Casos de Uso</button></li>
+                <li class="min-w-max md:min-w-full"><button onclick="scrollToSection('desafios')" class="nav-item w-full text-left px-6 py-4 text-sm hover:bg-slate-50 transition-colors">4. Seguridad, Costes y Futuro</button></li>
+            </ul>
+        </nav>
+        <main class="flex-1 p-6 md:p-12 overflow-x-hidden">
+            <section id="intro" class="mb-24 pt-4 scroll-mt-8">
+                <div class="max-w-4xl mx-auto">
+                    <span class="inline-block py-1 px-3 rounded-full bg-sky-100 text-sky-700 text-xs font-bold uppercase tracking-widest mb-4">Documentación Profunda</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6 leading-tight">De Modelos Estáticos a <span class="text-sky-500">Agentes Autónomos</span></h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">Este documento técnico analiza la transición fundamental en el ecosistema de la Inteligencia Artificial: el salto de los Modelos de Lenguaje (LLMs) a los Agentes de IA interactivos.</p>
+                </div>
+            </section>
+            <section id="niveles" class="mb-24 scroll-mt-12">
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-200 pb-2">Los 4 Niveles de Agencia</h2>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <button onclick="changeLevel(1)" id="btn-lvl-1" class="tab-btn active px-6 py-3 rounded-xl border border-slate-200 font-semibold transition-all">Nivel 1: Intención</button>
+                        <button onclick="changeLevel(2)" id="btn-lvl-2" class="tab-btn px-6 py-3 rounded-xl border border-slate-200 font-semibold transition-all">Nivel 2: Herramientas</button>
+                        <button onclick="changeLevel(3)" id="btn-lvl-3" class="tab-btn px-6 py-3 rounded-xl border border-slate-200 font-semibold transition-all">Nivel 3: Memoria</button>
+                        <button onclick="changeLevel(4)" id="btn-lvl-4" class="tab-btn px-6 py-3 rounded-xl border border-slate-200 font-semibold transition-all">Nivel 4: Skills</button>
+                    </div>
+                    <div class="glass-card rounded-2xl p-8 min-h-[400px] shadow-lg relative overflow-hidden">
+                        <div id="content-lvl-1" class="level-content fade-in">
+                            <h3 class="text-2xl font-bold text-sky-600 mb-4">Detección de Intencionalidad</h3>
+                            <p class="text-slate-600">El agente usa el LLM para mapear lenguaje natural a llamadas de función (Function Calling).</p>
+                        </div>
+                        <div id="content-lvl-2" class="level-content hidden"><h3 class="text-2xl font-bold text-sky-600 mb-4">Acceso a Herramientas</h3><p class="text-slate-600">Conexión con APIs, búsqueda web y sistemas de archivos mediante protocolos como MCP.</p></div>
+                        <div id="content-lvl-3" class="level-content hidden"><h3 class="text-2xl font-bold text-sky-600 mb-4">Memoria Vectorial</h3><div class="chart-container"><canvas id="vectorChart"></canvas></div></div>
+                        <div id="content-lvl-4" class="level-content hidden"><h3 class="text-2xl font-bold text-sky-600 mb-4">Habilidades (Skills)</h3><p class="text-slate-600">Scripts deterministas para automatizar tareas repetitivas con alta fidelidad.</p></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: "smooth" }); }
+        let vectorChartInstance = null;
+        function changeLevel(level) {
+            document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+            document.getElementById(`btn-lvl-${level}`).classList.add("active");
+            document.querySelectorAll(".level-content").forEach(content => content.classList.add("hidden"));
+            const activeContent = document.getElementById(`content-lvl-${level}`);
+            activeContent.classList.remove("hidden");
+            if (level === 3 && !vectorChartInstance) renderVectorChart();
+        }
+        function renderVectorChart() {
+            const ctxVector = document.getElementById("vectorChart").getContext("2d");
+            vectorChartInstance = new Chart(ctxVector, {
+                type: "scatter",
+                data: { datasets: [{ label: "Contexto Semántico", data: [{x: -10, y: 15}, {x: -12, y: 12}, {x: 10, y: -5}], backgroundColor: "#0ea5e9" }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+    </script>
+</body>
+</html>
