@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador Interactivo: Agentes de IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin: 0 auto; height: 300px; }
+        .nav-link.active { background-color: #eff6ff; color: #2563eb; border-left: 4px solid #2563eb; }
+        .level-card { transition: all 0.3s ease; }
+        .level-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-64 bg-white border-r border-slate-200 hidden md:flex flex-col">
+            <div class="p-6 border-b border-slate-100"><h1 class="text-xl font-bold">IA Architects</h1></div>
+            <nav class="flex-1 p-4 space-y-2">
+                <button onclick="showSection('dashboard')" class="nav-link w-full text-left px-4 py-3 rounded-lg text-sm font-semibold active">Dashboard</button>
+                <button onclick="showSection('niveles')" class="nav-link w-full text-left px-4 py-3 rounded-lg text-sm font-semibold">4 Niveles</button>
+                <button onclick="showSection('datos')" class="nav-link w-full text-left px-4 py-3 rounded-lg text-sm font-semibold">Datos RAG</button>
+            </nav>
+        </aside>
+        <main class="flex-1 overflow-y-auto p-8">
+            <section id="dashboard" class="max-w-4xl mx-auto space-y-6">
+                <h2 class="text-3xl font-bold">Visión General</h2>
+                <div class="bg-blue-600 p-8 rounded-3xl text-white shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">Agentes vs Chatbots</h3>
+                    <p class="opacity-90">Los agentes ejecutan acciones; los chatbots solo responden. Esta web explora la arquitectura necesaria para la autonomía real.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100">
+                        <p class="text-xs uppercase font-bold text-slate-400">Eficiencia Local</p>
+                        <p class="text-2xl font-bold">85% Ahorro</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100">
+                        <p class="text-xs uppercase font-bold text-slate-400">Seguridad</p>
+                        <p class="text-2xl font-bold text-red-500">Riesgo Alto</p>
+                    </div>
+                </div>
+            </section>
+            <section id="niveles" class="max-w-4xl mx-auto hidden grid grid-cols-2 gap-4">
+                <div class="level-card bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold mb-2">1. Intencionalidad</h4>
+                    <p class="text-xs text-slate-500">Extracción de objetivos del lenguaje natural.</p>
+                </div>
+                <div class="level-card bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold mb-2">2. Conectores</h4>
+                    <p class="text-xs text-slate-500">Acceso a APIs y mundo exterior (MCP).</p>
+                </div>
+                <div class="level-card bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold mb-2">3. Memoria</h4>
+                    <p class="text-xs text-slate-500">Vectores semánticos y persistencia RAG.</p>
+                </div>
+                <div class="level-card bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold mb-2">4. Skills</h4>
+                    <p class="text-xs text-slate-500">Habilidades deterministas en código.</p>
+                </div>
+            </section>
+            <section id="datos" class="max-w-4xl mx-auto hidden space-y-8">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold mb-4">Mapa Semántico</h4>
+                    <div class="chart-container"><canvas id="vectorChart"></canvas></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            if(id==='datos') renderChart();
+        }
+        function renderChart() {
+            new Chart(document.getElementById('vectorChart'), {
+                type: 'scatter',
+                data: { datasets: [{ label: 'Vectores', data: [{x: 10, y: 15}, {x: -10, y: -5}], backgroundColor: '#3b82f6' }] }
+            });
+        }
+    </script>
+</body>
+</html>
